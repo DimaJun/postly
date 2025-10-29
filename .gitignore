@@ -1,0 +1,39 @@
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Build output ---
+dist/
+build/
+out/
+coverage/
+
+# --- Environment variables ---
+.env
+.env.local
+.env.*.local
+
+# --- System files ---
+.DS_Store
+Thumbs.db
+
+# --- IDE & Editor configs ---
+.idea/
+.vscode/
+*.swp
+
+# --- Logs ---
+logs/
+*.log
+*.tmp
+
+# --- TypeScript ---
+*.tsbuildinfo
+
+# --- Misc ---
+temp/
+.tmp/
+.cache/
