@@ -53,6 +53,7 @@ export default defineConfig([
             'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
             'react/no-unstable-nested-components': 'warn',
             'no-console': 'warn',
+            'react-hooks/set-state-in-effect': 'off',
         },
     },
 ]);
