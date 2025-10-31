@@ -2,7 +2,7 @@ import { classNames } from '@/shared/helpers/classNames/classNames';
 import { useTheme } from '@/shared/hooks/useTheme/useTheme';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
-import { AppRouter } from '@/app/providers/router/ui/AppRouter';
+import { AppRouter } from './providers/router/ui/AppRouter';
 
 export function App() {
     const { theme } = useTheme();

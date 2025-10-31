@@ -1,59 +1,63 @@
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
 import s from './AuthForm.module.scss';
 import { classNames } from '@/shared/helpers/classNames/classNames';
 import { Input } from '@/shared/ui/Input';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/ui/Button';
+import { Loader } from '@/shared/ui/Loader';
+import { useAuthForm } from '../../lib/useAuthForm';
 
 interface AuthFormProps {
     className?: string;
     isLogin?: boolean;
+    onSuccess?: () => void;
 }
 
 export const AuthForm = memo((props: AuthFormProps) => {
-    const { className, isLogin } = props;
+    const { className, isLogin, onSuccess } = props;
     const { t } = useTranslation('authform');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [disable, setDisable] = useState(true);
 
-    useEffect(() => {
-        if (!username || !password) {
-            setDisable(true);
-        } else {
-            setDisable(false);
-        }
-    }, [email, password, username]);
+    const {
+        email,
+        username,
+        password,
+        isFormValid,
+        isLoading,
+        onChangeEmail,
+        onChangePassword,
+        onChangeUsername,
+        onRegister,
+    } = useAuthForm({ isLogin, onSuccess });
 
     return (
         <form className={classNames(s.AuthForm, {}, [className])}>
             <Input
                 value={username}
-                onChange={setUsername}
+                onChange={onChangeUsername}
                 placeholder={t('Никнейм')}
                 autofocus
             />
             <Input
                 value={password}
-                onChange={setPassword}
+                onChange={onChangePassword}
                 placeholder={t('Пароль')}
                 type='password'
             />
             {!isLogin && (
                 <Input
                     value={email}
-                    onChange={setEmail}
+                    onChange={onChangeEmail}
                     placeholder={t('Почта')}
                     type='email'
                 />
             )}
             <Button
                 className={s.confirmBtn}
-                disabled={disable}
+                disabled={!isFormValid || isLoading}
                 type='button'
+                onClick={onRegister}
             >
-                {isLogin ? t('Логин') : t('Регистрация')}
+                {isLoading ? <Loader /> : isLogin ? t('Логин') : t('Регистрация')}
             </Button>
         </form>
     );

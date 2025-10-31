@@ -44,7 +44,8 @@
         cursor: pointer;
     }
 
-    .focus, .selected {
+    .focus,
+    .selected {
         background: var(--inverted-primary-color);
     }
 

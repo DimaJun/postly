@@ -1,5 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpack from 'webpack';
+import { DefinePlugin, ProgressPlugin } from 'webpack';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
@@ -11,7 +11,10 @@ export function buildPlugins(isDev: boolean) {
             filename: 'index.html',
             template: './public/index.html',
         }),
-        new webpack.ProgressPlugin(),
+        new ProgressPlugin(),
+        new DefinePlugin({
+            __API__: JSON.stringify('http://localhost:8000'),
+        }),
     ];
 
     if (isDev) {
