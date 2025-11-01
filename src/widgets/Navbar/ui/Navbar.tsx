@@ -43,7 +43,9 @@ export const Navbar = ({ className }: NavbarProps) => {
             <div className={s.actions}>
                 {userData ? (
                     <>
-                        <p className={s.greeting}>Hello, {userData.username}</p>
+                        <p className={s.greeting}>
+                            {t('Привет')}, {userData.username}
+                        </p>
                         <Button
                             className={s.logout}
                             theme='outlineRed'
