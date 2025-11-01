@@ -4,3 +4,8 @@ export interface User {
     email: string;
     createdAt: string;
 }
+
+export interface UserSchema {
+    userData?: User;
+    _inited: boolean;
+}

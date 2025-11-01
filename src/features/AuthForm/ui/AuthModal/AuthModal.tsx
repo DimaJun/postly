@@ -22,6 +22,14 @@ export const AuthModal = memo((props: AuthModalProps) => {
         setIsLogin((prev) => !prev);
     };
 
+    /*
+     *
+     * 1. Зашел в приложение - нужно проверять не умерла ли кука
+     * 2. Если кука умерла - logout/refresh
+     * 3. Дальше понятно
+     *
+     * */
+
     return (
         <Modal
             className={classNames(s.AuthModal, {}, [className])}
@@ -37,7 +45,10 @@ export const AuthModal = memo((props: AuthModalProps) => {
                     {isLogin ? t('Не зарегистрированы?') : t('Есть аккаунт?')}
                 </Button>
             </div>
-            <AuthForm isLogin={isLogin} />
+            <AuthForm
+                isLogin={isLogin}
+                onSuccess={onClose}
+            />
         </Modal>
     );
 });

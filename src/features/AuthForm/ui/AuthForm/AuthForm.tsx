@@ -22,11 +22,12 @@ export const AuthForm = memo((props: AuthFormProps) => {
         username,
         password,
         isFormValid,
-        isLoading,
+        isLoggingIn,
+        isRegistering,
         onChangeEmail,
         onChangePassword,
         onChangeUsername,
-        onRegister,
+        onSubmit,
     } = useAuthForm({ isLogin, onSuccess });
 
     return (
@@ -53,11 +54,11 @@ export const AuthForm = memo((props: AuthFormProps) => {
             )}
             <Button
                 className={s.confirmBtn}
-                disabled={!isFormValid || isLoading}
+                disabled={!isFormValid || isRegistering || isLoggingIn}
                 type='button'
-                onClick={onRegister}
+                onClick={onSubmit}
             >
-                {isLoading ? <Loader /> : isLogin ? t('Логин') : t('Регистрация')}
+                {isRegistering || isLoggingIn ? <Loader /> : isLogin ? t('Логин') : t('Регистрация')}
             </Button>
         </form>
     );
