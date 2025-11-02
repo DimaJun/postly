@@ -7,14 +7,26 @@ import { Input } from '@/shared/ui/Input';
 import { useTranslation } from 'react-i18next';
 import { CurrencySelect } from '@/entities/Currency';
 import { CountrySelect } from '@/entities/Country';
+import { useProfileForm } from '@/entities/Profile/lib/useProfileForm';
 
 interface ProfileCard {
     profile?: Partial<Profile>;
+    readonly?: boolean;
 }
 
 export const ProfileCard = memo((props: ProfileCard) => {
     const { t } = useTranslation('profile');
+    const readonly = props.readonly;
     const { city, country, currency, lastname, age, avatar, firstname } = props.profile;
+    const {
+        onChangeCity,
+        onChangeLastName,
+        onChangeFirstName,
+        onChangeCurrency,
+        onChangeCountry,
+        onChangeAvatar,
+        onChangeAge,
+    } = useProfileForm();
 
     if (!props.profile) return null;
 
@@ -30,42 +42,49 @@ export const ProfileCard = memo((props: ProfileCard) => {
                 className={s.input}
                 placeholder={t('Имя')}
                 value={firstname}
-                readonly
+                readonly={readonly}
+                onChange={onChangeFirstName}
             />
             <Input
                 className={s.input}
                 placeholder={t('Фамилия')}
                 value={lastname}
-                readonly
+                readonly={readonly}
+                onChange={onChangeLastName}
             />
             <Input
                 className={s.input}
                 placeholder={t('Возраст')}
                 value={age}
                 type='number'
-                readonly
+                readonly={readonly}
+                onChange={onChangeAge}
             />
             <Input
                 className={s.input}
                 placeholder={t('Город')}
                 value={city}
-                readonly
+                readonly={readonly}
+                onChange={onChangeCity}
             />
             <Input
                 className={s.input}
                 placeholder={t('Аватар')}
                 value={avatar}
-                readonly
+                readonly={readonly}
+                onChange={onChangeAvatar}
             />
             <CurrencySelect
                 className={s.input}
                 value={currency}
-                readonly
+                readonly={readonly}
+                onChange={onChangeCurrency}
             />
             <CountrySelect
                 className={s.input}
                 value={country}
-                readonly
+                readonly={readonly}
+                onChange={onChangeCountry}
             />
         </Card>
     );

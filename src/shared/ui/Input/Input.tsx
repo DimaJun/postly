@@ -7,7 +7,7 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
-    onChange?: (value: string) => void;
+    onChange?: (value: string | number) => void;
     autofocus?: boolean;
     readonly?: boolean;
 }

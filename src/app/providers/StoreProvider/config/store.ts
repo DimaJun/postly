@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { authReducer } from '@/features/AuthForm';
 import { userReducer } from '@/entities/User';
+import { profileReducer } from '@/entities/Profile';
 
 export const store = configureStore({
     reducer: {
         [rtkApi.reducerPath]: rtkApi.reducer,
         auth: authReducer,
         user: userReducer,
+        profile: profileReducer,
     },
     devTools: true,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(rtkApi.middleware),
