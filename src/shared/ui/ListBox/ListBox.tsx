@@ -45,12 +45,12 @@ export const ListBox = memo((props: ListBoxProps) => {
     const optionsClasses = [mapDirectionClass[direction]];
 
     return (
-        <div className={s.wrapper}>
+        <div className={classNames(s.wrapper, { [s.disabled]: readonly }, [className])}>
             {label && (
                 <span className={classNames(s.label, { [s.disabled]: readonly }, [])}>{`${label}>`}</span>
             )}
             <HListBox
-                className={classNames(s.ListBox, { [s.disabled]: readonly }, [className])}
+                className={classNames(s.ListBox, {}, [])}
                 as='div'
                 disabled={readonly}
                 value={value}

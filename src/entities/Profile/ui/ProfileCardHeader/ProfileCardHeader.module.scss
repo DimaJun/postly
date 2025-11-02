@@ -1,0 +1,13 @@
+.ProfileCardHeader {
+    margin-bottom: 16px;
+}
+
+.ProfileCardHeader,
+.editBtns {
+    display: flex;
+}
+
+.editBtns {
+    margin-left: auto;
+    gap: 10px;
+}

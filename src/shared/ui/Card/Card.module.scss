@@ -1,0 +1,32 @@
+.Card {
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.normal {
+    background: var(--card-bg);
+}
+
+.outlined {
+    border: 1px solid var(--primary-color);
+}
+
+.max {
+    width: 100%;
+}
+
+.p0 {
+    padding: 0;
+}
+.p8 {
+    padding: 8px;
+}
+.p16 {
+    padding: 16px;
+}
+.p32 {
+    padding: 32px;
+}
+.p64 {
+    padding: 64px;
+}
